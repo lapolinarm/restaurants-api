@@ -12,6 +12,7 @@ class Api::V1::RestaurantsController < Api::V1::BaseController
   end
 
   def update
+    authorize @restaurant
     if @restaurant.update(restaurant_params)
       render :show
     else
@@ -32,7 +33,8 @@ class Api::V1::RestaurantsController < Api::V1::BaseController
 
   def destroy
     @restaurant.destroy
-    head :no_content
+    # head :no_content
+    render json: { messages: "Restaurante borrado nro #{params[:id]}" }
     # No need to create a `destroy.json.jbuilder` view
   end
 
