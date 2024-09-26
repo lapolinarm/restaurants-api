@@ -31,7 +31,6 @@ class Api::V1::RestaurantsController < Api::V1::BaseController
   end
 
   def render_error
-    render json: { errors: @restaurant.errors.full_messages },
-      status: :unprocessable_entity
+    render json: { errors: @restaurant.errors.full_messages }, status: :unprocessable_entity
   end
 end
